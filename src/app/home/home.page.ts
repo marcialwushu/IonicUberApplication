@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, LoadingController } from '@ionic/angular';
-import { Environment } from '@ionic-native/google-maps';
+import { Environment, GoogleMap, GoogleMaps } from '@ionic-native/google-maps';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,9 @@ import { Environment } from '@ionic-native/google-maps';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('map') mapElement: any;
+  @ViewChild('map', {static: true}) mapElement: any;
   private loading: any;
+  private map: GoogleMap;
 
   constructor(
     private platform: Platform,
@@ -33,7 +34,10 @@ export class HomePage implements OnInit {
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(your api key for `https://`)',
       'API_KEY_FOR_BROWSER_DEBUG': '(your api key for `http://`)'
-    })
+    });
+
+    this.map = GoogleMaps.create(this.mapElement);
   }
 
 }
+
