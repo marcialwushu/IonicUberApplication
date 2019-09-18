@@ -1,5 +1,7 @@
 {
   "name": "ionicUberApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
